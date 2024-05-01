@@ -9,7 +9,7 @@
 #   end
 require 'faker'
 
-categories = %w[chinese italian japanese french belgian]
+categories = %w[Chinese Italian Japanese French Belgian]
 
 5.times do
   Restaurant.create(
