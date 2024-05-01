@@ -4,6 +4,27 @@
 <p>Address: <%= @restaurant.address %></p>
 <p>Call us: <%= @restaurant.phone_number %></p>
 
+<h2>Reviews</h2>
+  <ul>
+    <% if @restaurant.reviews.length > 0 %>
+      <% @restaurant.reviews.each do |review| %>
+        <li>
+          <%= review.content %>
+
+          <%= link_to "Delete",
+            review_path(review),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+
+        </li>
+      <% end %>
+    <% else %>
+      <p>No reviews yet</p>
+    <% end %>
+  </ul>
+
+
 <div>
   <%= link_to "Back to restaurants", restaurants_path %>
+  <%= link_to "Leave a review", new_restaurant_review_path(@restaurant)  %>
 </div>
